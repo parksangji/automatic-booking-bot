@@ -4,6 +4,7 @@ import com.example.automaticbookingbot.dto.BookingDto;
 import com.example.automaticbookingbot.service.BookingService;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -126,5 +127,19 @@ public class BookingController {
             redirectAttributes.addFlashAttribute("errorMessage", "Failed to change booking status: " + e.getMessage());
         }
         return "redirect:/main";
+    }
+
+    @GetMapping("/{id}/details")
+    @ResponseBody // 이 어노테이션을 통해 ViewResolver를 거치지 않고 반환 객체가 HTTP 응답 본문이 됨
+    public ResponseEntity<BookingDto> getBookingDetails(@PathVariable Long id, Principal principal) {
+        if (principal == null) {
+            return ResponseEntity.status(401).build();
+        }
+        try {
+            BookingDto bookingDto = bookingService.getBookingByIdAndUsername(id, principal.getName());
+            return ResponseEntity.ok(bookingDto);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

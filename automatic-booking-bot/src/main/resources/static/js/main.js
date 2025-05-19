@@ -78,4 +78,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (toastErrorAlert) showToastAlert(toastErrorAlert);
 
     console.log("main.js DOMContentLoaded setup complete.");
+
+    if (bookingsTable) {
+        bookingsTable.addEventListener('click', function(event) {
+            const editButton = event.target.closest('.editBookingBtn');
+            const viewButton = event.target.closest('.viewDetailsBtn');
+
+            if (editButton) {
+                const bookingId = editButton.dataset.bookingId;
+                if (bookingId) {
+                    // 이전 모달 폼 로직 호출
+                    fetchAndInjectForm(window.baseUrl + `bookings/${bookingId}/edit-form`, 'Edit Booking');
+                }
+            } else if (viewButton) {
+                const bookingId = viewButton.dataset.bookingId;
+                if (bookingId && typeof window.showBookingDetails === 'function') {
+                    window.showBookingDetails(bookingId); // slidepanel.js의 함수 호출
+                }
+            }
+        });
+    }
 });
