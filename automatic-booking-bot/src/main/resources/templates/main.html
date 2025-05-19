@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container main-content">
+  <h2 class="page-title">Welcome!</h2> <p>
+  You are logged in, <span sec:authentication="name" class="username">User</span>.
+</p>
+  <p>This is your personal dashboard, designed with soft and elegant tones.</p>
+
+  <form th:action="@{/logout}" method="post" style="margin-top: 30px;">
+    <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}" />
+    <button type="submit" class="btn btn-secondary">Logout</button>
+  </form>
+</div>
+</body>
+</html>

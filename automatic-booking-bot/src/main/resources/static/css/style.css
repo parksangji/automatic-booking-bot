@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif; /* 동글동글한 기본 폰트 */
+    background-color: #FDFBF6;
+    color: #4A4A4A;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.container {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px;
+}
+
+/* 페이지 제목 - 필기체 */
+h1, h2.page-title { /* main.html의 h2에만 선택적으로 적용하기 위해 .page-title 클래스 추가 고려 */
+    font-family: 'Dancing Script', cursive;
+    color: #8C7853;
+    margin-bottom: 30px;
+}
+
+h1 { /* Login, Register 페이지 제목 */
+    font-size: 3.2em;
+}
+
+h2.page-title { /* Main 페이지 제목 */
+    font-size: 2.8em; /* 다른 h2와 구분하기 위해 약간 다르게 */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600; /* Nunito는 400(normal), 600, 700(bold) 등 다양한 두께 지원 */
+    color: #7A7A7A;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px; /* 좀 더 동글동글하게 */
+    font-size: 1em;
+    font-family: 'Nunito', sans-serif; /* 입력 필드에도 폰트 적용 */
+    background-color: #FDFDFD;
+    color: #4A4A4A;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #BCAAA4;
+    box-shadow: 0 0 0 0.2rem rgba(188, 170, 164, 0.25);
+    outline: none;
+}
+
+.btn {
+    font-family: 'Nunito', sans-serif; /* 버튼에도 폰트 적용 */
+    font-weight: 700; /* Bold */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 20px; /* 버튼을 더 동글동글하게 */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: #D2B48C;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: #C1A37C;
+    box-shadow: 0 4px 12px rgba(210, 180, 140, 0.4);
+}
+
+.btn-secondary {
+    background-color: #EAE0D5;
+    color: #6F4E37;
+    border: 1px solid #DCD0C0;
+}
+
+.btn-secondary:hover {
+    background-color: #DAD0C5;
+    box-shadow: 0 4px 12px rgba(200, 190, 180, 0.3);
+}
+
+.link-container {
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+.link-container a {
+    color: #A1887F;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+    color: #8C7853;
+}
+
+.error-message {
+    color: #C62828;
+    background-color: #FFEBEE;
+    border: 1px solid #FFCDD2;
+    padding: 10px;
+    border-radius: 8px; /* 동글동글 */
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 400; /* Nunito 보통 두께 */
+}
+
+.error-message[style*="color: green;"] {
+    color: #2E7D32;
+    background-color: #E8F5E9;
+    border-color: #C8E6C9;
+}
+
+.main-content p {
+    font-size: 1.1em; /* Nunito는 크기가 약간 작을 수 있어 조절 */
+    line-height: 1.7;
+    color: #555555;
+    font-weight: 400;
+}
+
+/* main.html의 사용자 이름 - 필기체 */
+.main-content .username {
+    font-family: 'Dancing Script', cursive;
+    color: #8C7853;
+    font-size: 1.8em; /* 필기체 크기 강조 */
+    font-weight: bold; /* Dancing Script는 자체 weight가 있지만, 명시 */
+}
