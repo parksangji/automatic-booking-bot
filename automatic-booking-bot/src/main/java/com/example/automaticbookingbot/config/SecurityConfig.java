@@ -29,7 +29,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers("/").permitAll() // Allow access to root, will be redirected by MainController
+                        .requestMatchers("/").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

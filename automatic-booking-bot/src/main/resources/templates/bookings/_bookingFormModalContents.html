@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form th:fragment="bookingFormContents(formActionUrl, bookingData, submitButtonText)"
+      id="modalBookingForm" th:action="${formActionUrl}" method="post" th:object="${bookingData}">
+    <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}" />
+    <input type="hidden" id="bookingId" name="id" th:field="*{id}" />
+
+    <div class="form-group">
+        <label for="modalSiteName">Site Name:</label>
+        <input type="text" id="modalSiteName" th:field="*{siteName}" class="form-control">
+        <div th:if="${#fields.hasErrors('siteName')}" th:errors="*{siteName}" class="error-message modal-error"></div>
+    </div>
+    <div class="form-group">
+        <label for="modalSiteUrl">Site URL:</label>
+        <input type="text" id="modalSiteUrl" th:field="*{siteUrl}" class="form-control">
+        <div th:if="${#fields.hasErrors('siteUrl')}" th:errors="*{siteUrl}" class="error-message modal-error"></div>
+    </div>
+    <div class="form-group">
+        <label for="modalLoginId">Login ID:</label>
+        <input type="text" id="modalLoginId" th:field="*{loginId}" class="form-control">
+        <div th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" class="error-message modal-error"></div>
+    </div>
+    <div class="form-group">
+        <label for="modalLoginPassword">Password:</label>
+        <input type="password" id="modalLoginPassword" name="loginPassword" class="form-control">
+        <small th:if="${bookingData.id != null}">Leave blank if not changing password.</small>
+        <div th:if="${#fields.hasErrors('loginPassword')}" th:errors="*{loginPassword}" class="error-message modal-error"></div>
+    </div>
+    <div class="form-group">
+        <label for="modalBookingTime">Booking Time:</label>
+        <input type="datetime-local" id="modalBookingTime" th:field="*{bookingTime}" class="form-control">
+        <div th:if="${#fields.hasErrors('bookingTime')}" th:errors="*{bookingTime}" class="error-message modal-error"></div>
+    </div>
+    <div class="form-group" id="modalActiveStatusGroup" th:style="${bookingData.id == null ? 'display:none;' : ''}">
+        <label for="modalActive">Status:</label>
+        <select id="modalActive" th:field="*{active}" class="form-control" style="width:100%; padding:12px; border-radius: 8px; border: 1px solid #E0E0E0;">
+            <option th:value="true">Active</option>
+            <option th:value="false">Inactive</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" th:text="${submitButtonText}">Submit</button>
+</form>
+</body>
+</html>

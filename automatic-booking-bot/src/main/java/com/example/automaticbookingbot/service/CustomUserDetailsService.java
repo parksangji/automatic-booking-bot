@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String emailInput) throws UsernameNotFoundException { // 매개변수는 사실상 email
+    public UserDetails loadUserByUsername(String emailInput) throws UsernameNotFoundException {
         log.debug("Attempting to load user by email from login form: '{}'", emailInput);
 
         if (emailInput == null || emailInput.trim().isEmpty()) {
